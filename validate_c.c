@@ -6,7 +6,7 @@
 /*   By: oostapen <oostapen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 21:20:20 by oostapen          #+#    #+#             */
-/*   Updated: 2024/11/13 23:03:20 by oostapen         ###   ########.fr       */
+/*   Updated: 2024/11/14 23:44:45 by oostapen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@ static void	flood_fill(char **map, int x, int y, t_data_game *game)
 		return ;
 	if (map[y][x] == 'C')
 		game->total_collectibles_found++;
-	if (map[y][x] == 'E')//compare in logic
-		game->zjebana;
+	if (map[y][x] == 'E')
+		game->exit_found++;
 	map[y][x] = 'v';
 	flood_fill(map, x, y - 1, game);
 	flood_fill(map, x - 1, y, game);
@@ -48,6 +48,7 @@ void	validate_path(t_data_game *game)
 	int		i;
 
 	game->total_collectibles_found = 0;
+	game->exit_found = 0;
 	map_copy = malloc(sizeof(char *) * game->map.map_height);
 	if (!map_copy)
 		end_game(game, "Malloc error for map copy", 1);
@@ -63,6 +64,8 @@ void	validate_path(t_data_game *game)
 		game->map.player_y_position, game);
 	if (game->total_collectibles_found != game->total_collectibles)
 		end_game(game, "Not all collectibles are accessible!", 1);
+	if (game->exit_found != 1)
+		end_game(game, "Exit is not accessible!", 1);
 	i = 0;
 	while (i < game->map.map_height)
 		free(map_copy[i++]);

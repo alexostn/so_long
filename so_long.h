@@ -6,7 +6,7 @@
 /*   By: oostapen <oostapen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 12:10:06 by agorski           #+#    #+#             */
-/*   Updated: 2024/11/13 21:24:42 by oostapen         ###   ########.fr       */
+/*   Updated: 2024/11/14 23:31:09 by oostapen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ typedef struct s_data_game
 	t_player	player;
 	/*check accesible elements*/
 	int			total_collectibles_found;
+	int			exit_found;
 }				t_data_game;
 
 typedef struct s_element_count
