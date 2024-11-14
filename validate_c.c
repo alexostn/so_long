@@ -6,14 +6,14 @@
 /*   By: oostapen <oostapen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 21:20:20 by oostapen          #+#    #+#             */
-/*   Updated: 2024/11/14 23:44:45 by oostapen         ###   ########.fr       */
+/*   Updated: 2024/11/15 00:36:10 by oostapen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
 void	process_map_element(t_data_game *game, int i, int j,
-							t_element_count *count)
+					t_element_count *count)
 {
 	if (game->map.map[i][j] == 'C')
 		game->total_collectibles++;
@@ -42,13 +42,11 @@ static void	flood_fill(char **map, int x, int y, t_data_game *game)
 	flood_fill(map, x + 1, y, game);
 }
 
-void	validate_path(t_data_game *game)
+static char	**copy_map(t_data_game *game)
 {
 	char	**map_copy;
 	int		i;
 
-	game->total_collectibles_found = 0;
-	game->exit_found = 0;
 	map_copy = malloc(sizeof(char *) * game->map.map_height);
 	if (!map_copy)
 		end_game(game, "Malloc error for map copy", 1);
@@ -60,6 +58,17 @@ void	validate_path(t_data_game *game)
 			end_game(game, "Malloc error for map row copy", 1);
 		i++;
 	}
+	return (map_copy);
+}
+
+void	validate_path(t_data_game *game)
+{
+	char	**map_copy;
+	int		i;
+
+	game->total_collectibles_found = 0;
+	game->exit_found = 0;
+	map_copy = copy_map(game);
 	flood_fill(map_copy, game->map.player_x_position,
 		game->map.player_y_position, game);
 	if (game->total_collectibles_found != game->total_collectibles)
