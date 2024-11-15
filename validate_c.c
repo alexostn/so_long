@@ -71,7 +71,7 @@ void	validate_path(t_data_game *game)
 	map_copy = copy_map(game);
 	flood_fill(map_copy, game->map.player_x_position,
 		game->map.player_y_position, game);
-	if (game->total_collectibles_found != game->total_collectibles)
+	if (game->total_collectibles_found != game->total_collectibles) //in case of "!=" we also clean map
 	{
 		i = 0;
 		while (i < game->map.map_height)
@@ -79,7 +79,7 @@ void	validate_path(t_data_game *game)
 		free(map_copy);
 		end_game(game, "Not all collectibles are accessible!", 1);
 	}
-	if (game->exit_found != 1)
+	if (game->exit_found != 1) //in case of "!=" we also clean map
 	{
 		i = 0;
 		while (i < game->map.map_height)
