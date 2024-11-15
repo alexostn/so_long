@@ -87,7 +87,7 @@ void	validate_path(t_data_game *game)
 		free(map_copy);
 		end_game(game, "Exit is not accessible!", 1);
 	}
-	i = 0;
+	i = 0; 								//COMMON CLEAN MAP
 	while (i < game->map.map_height)
 		free(map_copy[i++]);
 	free(map_copy);
