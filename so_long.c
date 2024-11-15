@@ -6,7 +6,7 @@
 /*   By: oostapen <oostapen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 13:30:10 by oostapen          #+#    #+#             */
-/*   Updated: 2024/11/15 13:30:16 by oostapen         ###   ########.fr       */
+/*   Updated: 2024/11/15 19:41:00 by oostapen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,10 @@ static void	init_game(t_data_game *game)
 	game->player.player_l.texture_ptr = NULL;
 	game->player.player_u.texture_ptr = NULL;
 	game->player.player_d.texture_ptr = NULL;
+	//game->map_copy = NULL; 
+	//and then in function validate_path not clean
+	//but in funcition end_game add CONDITION:
+	//IF != NULL, then clean
 }
 
 int	main(int argc, char **argv)
