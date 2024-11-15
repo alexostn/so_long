@@ -3,14 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agorski <agorski@student.42warsaw.pl>      +#+  +:+       +#+        */
+/*   By: oostapen <oostapen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/03 14:47:54 by agorski           #+#    #+#             */
-/*   Updated: 2024/04/07 14:40:45 by agorski          ###   ########.fr       */
+/*   Created: 2024/11/15 13:33:44 by oostapen          #+#    #+#             */
+/*   Updated: 2024/11/15 13:33:48 by oostapen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// #include <stdio.h>
 #include "libft.h"
 
 t_list	*ft_lstnew(void *content)
