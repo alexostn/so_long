@@ -6,7 +6,7 @@
 /*   By: oostapen <oostapen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 21:20:20 by oostapen          #+#    #+#             */
-/*   Updated: 2024/11/15 00:36:10 by oostapen         ###   ########.fr       */
+/*   Updated: 2024/11/15 19:20:24 by oostapen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,9 +72,21 @@ void	validate_path(t_data_game *game)
 	flood_fill(map_copy, game->map.player_x_position,
 		game->map.player_y_position, game);
 	if (game->total_collectibles_found != game->total_collectibles)
+	{
+		i = 0;
+		while (i < game->map.map_height)
+			free(map_copy[i++]);
+		free(map_copy);
 		end_game(game, "Not all collectibles are accessible!", 1);
+	}
 	if (game->exit_found != 1)
+	{
+		i = 0;
+		while (i < game->map.map_height)
+			free(map_copy[i++]);
+		free(map_copy);
 		end_game(game, "Exit is not accessible!", 1);
+	}
 	i = 0;
 	while (i < game->map.map_height)
 		free(map_copy[i++]);
