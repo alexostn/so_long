@@ -66,10 +66,10 @@ static void	init_game(t_data_game *game)
 	game->player.player_l.texture_ptr = NULL;
 	game->player.player_u.texture_ptr = NULL;
 	game->player.player_d.texture_ptr = NULL;
-	//game->map_copy = NULL; 
+	//game->map_copy = NULL; //ATERNATIVE ELEGANT VERSION
 	//and then in function validate_path not clean
 	//but in funcition end_game add CONDITION:
-	//IF != NULL, then clean
+	//IF game->map_copy != NULL, then clean
 }
 
 int	main(int argc, char **argv)
